@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const char panel[][20]       = { "xfce4-panel", "Xfce4-panel" }; /* name & cls of panel win */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "consolas-font:size=12" };
 static const char dmenufont[]       = "consolas-font:size=12";
@@ -28,12 +28,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ panel[1],   NULL,       NULL,       (1 << 9) - 1, 1, 0, 0,      -1  },
-	{ "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class     instance  title           tags mask    isfloating  isterminal  noswallow  monitor  canfocus */
+	{ "Gimp",    NULL,     NULL,           0,           1,          0,           0,        -1,      1 },
+	{ "Firefox", NULL,     NULL,           1 << 8,      0,          0,          -1,        -1,      1 },
+	{ panel[1],   NULL,       NULL,       (1 << 9) - 1, 1,          0,           0,        -1,      0 },
+	{ "st",      NULL,     NULL,           0,           0,          1,           0,        -1,      1 },
+	{ NULL,      NULL,     "Event Tester", 0,           0,          0,           1,        -1,      1 }, /* xev */
 };
 
 /* layout(s) */
